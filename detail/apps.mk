@@ -3,12 +3,12 @@ DRIVERS = linux-firmware \
 		  $(GRAPHICS)
 
 CORE_APPS =	$(DRIVERS) \
-			alacritty \
+			$(TERMINAL) \
 			bash-completion \
 			curl \
 			dash \
 			dunst \
-			firefox \
+			$(BROWSER) \
 			git \
 			mlocate \
 			pacman-contrib \
@@ -23,7 +23,7 @@ CORE_APPS =	$(DRIVERS) \
 			xorg-xsetroot \
 			zsh
 
-PY_DEPS = python python-piip
+PY_DEPS = python python-pip
 
 DEV_APPS =  $(call add,PY_DEPS) \
 			base-devel \

@@ -1,4 +1,4 @@
-include options.mk
+include detail/options.mk
 GIT_REMOTE_TYPE=$(GIT_TYPE_HTTP)
 
 $(XDG_CONFIG_HOME)=$(XDG_CONFIG_DEFAULT)
