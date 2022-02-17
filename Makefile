@@ -72,7 +72,7 @@ $(ALL_CONFIG_FILES): $(GIT_SSH_FIX)
 	cp -r $@ $(HOME)/$(XDG_CONFIG_HOME_NAME)
 
 $(GIT_SSH_FIX):
-	@printf '[url "https://github.com/"]\n\tinsteadOf = git@github.com:' >> $(GIT_SSH_FIX)
+	@printf '[url "https://github.com/"]\n\tinsteadOf = git@github.com:\n' >> $(GIT_SSH_FIX)
 
 
 .PHONY: all clean
