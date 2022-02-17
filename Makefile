@@ -37,7 +37,7 @@ $(PYTHON_INSTALL_LOG): logs/install.log
 src/yay: logs/install.log
 	@@mkdir -p src
 	git clone https://aur.archlinux.org/$(call url-part, $@, 2) $@
-	cd yay && makepkg -sirc --noconfirm
+	cd src/yay && makepkg -sirc --noconfirm
 
 
 $(CORE_SRC) $(SECONDARY_SRC): logs
