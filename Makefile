@@ -55,7 +55,7 @@ $(SECONDARY_BIN): logs
 	@mkdir -p bin
 	curl https://github.com/dk949/$(call url-part, $@, 2)/releases/latest/download/$(call url-part, $@, 2) -o $@ -L
 	@echo "downloaded $@" >> logs/download.log
-	sudo install $@
+	sudo install $@ $(DESTDIR)$(PREFIX)/bin/
 	@echo "installed $@" >> logs/install.log
 
 
