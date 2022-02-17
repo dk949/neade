@@ -2,6 +2,7 @@ include config.mk
 include detail/util.mk
 include detail/configs.mk
 include detail/apps.mk
+include detail/gitsshjank.mk
 
 ALL_CONFIG_FILES = $(addprefix $(XDG_CONFIG_HOME_NAME)/,$(CONFIGS))
 
@@ -34,13 +35,17 @@ $(PYTHON_INSTALL_LOG): logs/install.log
 	@echo "installed $(PYTHON_PACKAGES)" >> $@
 
 
-src/yay: logs/install.log
-	@@mkdir -p src
+src/yay: logs/install.log $(GIT_SSH_FIX)
+	@mkdir -p src
+	@mkdir -p logs
 	git clone https://aur.archlinux.org/$(call url-part, $@, 2) $@
+	@echo "cloned $@" >> logs/download.log
 	cd src/yay && makepkg -sirc --noconfirm
+	@echo "built $@" >> logs/build.log
+	@echo "installed $@" >> logs/install.log
+	$(call clean-git-ssh-fix)
 
-
-$(CORE_SRC) $(SECONDARY_SRC): logs
+$(CORE_SRC) $(SECONDARY_SRC): logs $(GIT_SSH_FIX)
 	@mkdir -p logs
 	@mkdir -p src
 	git clone $(GIT_REMOTE_TYPE)dk949/$(call url-part, $@, 2) $@ --recursive
@@ -48,6 +53,7 @@ $(CORE_SRC) $(SECONDARY_SRC): logs
 	sudo make -C $@ install
 	@echo "built $@" >> logs/build.log
 	@echo "installed $@" >> logs/install.log
+	$(call clean-git-ssh-fix)
 
 
 $(SECONDARY_BIN): logs
@@ -59,13 +65,14 @@ $(SECONDARY_BIN): logs
 	@echo "installed $@" >> logs/install.log
 
 
-$(ALL_CONFIG_FILES):
+$(ALL_CONFIG_FILES): $(GIT_SSH_FIX)
 	@mkdir -p logs
 	@mkdir -p $(XDG_CONFIG_HOME_NAME)
 	git clone $(GIT_REMOTE_TYPE)dk949/$(call url-part, $@, 2) $@ --recursive
 	@echo "cloned $@" >> logs/download.log
 	@mkdir $(HOME)/$(XDG_CONFIG_HOME_NAME)
 	cp -r $@ $(HOME)/$(XDG_CONFIG_HOME_NAME)
+	$(call clean-git-ssh-fix)
 
 
 .PHONY: all clean
