@@ -65,8 +65,7 @@ FONTS =	terminus-font \
 		ttf-jetbrains-mono \
 		xorg-fonts-type1
 
-FONST_EXTRA = font-bh-ttf \
-			  gsfonts \
+FONST_EXTRA = gsfonts \
 			  ttf-font-awesome \
 			  ttf-hack \
 			  ttf-liberation
