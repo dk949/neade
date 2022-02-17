@@ -1,0 +1,5 @@
+rm
+bin
+logs
+src
+.config
