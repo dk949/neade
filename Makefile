@@ -68,7 +68,7 @@ $(ALL_CONFIG_FILES): $(GIT_SSH_FIX)
 	@mkdir -p $(XDG_CONFIG_HOME_NAME)
 	git clone $(GIT_REMOTE_TYPE)dk949/$(call url-part, $@, 2) $@ --recursive
 	@echo "cloned $@" >> logs/download.log
-	@mkdir $(HOME)/$(XDG_CONFIG_HOME_NAME)
+	@mkdir -p $(HOME)/$(XDG_CONFIG_HOME_NAME)
 	cp -r $@ $(HOME)/$(XDG_CONFIG_HOME_NAME)
 
 $(GIT_SSH_FIX):
