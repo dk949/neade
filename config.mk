@@ -1,10 +1,12 @@
 include detail/options.mk
 GIT_REMOTE_TYPE=$(GIT_TYPE_HTTP)
 
-$(XDG_CONFIG_HOME)=$(XDG_CONFIG_DEFAULT)
+XDG_CONFIG_HOME_NAME=$(XDG_CONFIG_DEFAULT)
 
 GRAPHICS = $(GRAPHICS_DRIVER_INTEL)
 UCODE = intel-ucode
+BROWSER = firefox
+TERMINAL = alacritty
 
 NEED_DEV_APPS         = 1
 NEED_PY_DEPS          = 1

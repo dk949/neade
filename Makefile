@@ -1,16 +1,23 @@
-include util.mk
 include config.mk
-include apps.mk
+include detail/util.mk
+include detail/configs.mk
+include detail/apps.mk
 
-all: src bin $(XDG_CONFIG_HOME)
+ALL_CONFIG_FILES = $(addprefix $(XDG_CONFIG_HOME_NAME)/,$(CONFIGS))
+
+
+
+all: src bin $(XDG_CONFIG_HOME_NAME)
 
 clean:
-	@rm -r src bin logs
+	@rm -rf src bin logs .config
 
 logs: logs/install.log $(AUR_INSTALL_LOG) $(PYTHON_INSTALL_LOG)
 src: $(CORE_SRC) $(SECONDARY_SRC)
 bin: $(SECONDARY_BIN)
-$(XDG_CONFIG_HOME): $(XDG_CONFIG_HOME)/$(CONFIGS)
+
+$(XDG_CONFIG_HOME_NAME): $(ALL_CONFIG_FILES)
+	@echo "making config. configs = $^"
 
 
 logs/install.log:
@@ -53,11 +60,14 @@ $(SECONDARY_BIN): logs
 	@echo sudo install $@
 	@echo "installed $@" >> logs/install.log
 
-$(XDG_CONFIG_HOME)/$(CONFIGS):
+
+$(ALL_CONFIG_FILES):
 	@mkdir -p logs
-	@mkdir -p $(XDG_CONFIG_HOME)
+	@mkdir -p $(XDG_CONFIG_HOME_NAME)
 	@echo git clone $(GIT_REMOTE_TYPE)dk949/$(call url-part, $@, 2) $@ --recursive
 	@echo "cloned $@" >> logs/download.log
+	@echo mkdir $(HOME)/$(XDG_CONFIG_HOME_NAME)
+	@echo cp -r $@ $(HOME)/$(XDG_CONFIG_HOME_NAME)
 
 
-.PHONY: all clean system
+.PHONY: all clean
