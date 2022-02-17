@@ -1,0 +1,25 @@
+installed linux-firmware intel-ucode xf86-video-intel alacritty bash-completion curl dash dunst firefox git mlocate pacman-contrib pcmanfm picom wget xclip xdg-user-dirs xorg-server xorg-xinit xorg-xinput xorg-xsetroot zsh   python python-piip base-devel clang cmake ctags gdb valgrind   powertop tlp upower  alsa-utils pulseaudio pulseaudio-alsa feh figlet fzf htop mediainfo p7zip pass wireless_tools wmname xorg-xbacklight xorg-xprop  arc-gtk-theme arc-icon-theme neofetch  terminus-font ttf-jetbrains-mono xorg-fonts-type1  font-bh-ttf gsfonts ttf-font-awesome ttf-hack ttf-liberation
+installed src/dwm
+installed src/dmenu
+installed src/slstatus
+installed src/slock
+installed src/dwm-scripts
+installed src/dmenu-scripts
+installed src/shellutils
+installed src/git-tools
+installed src/runc
+installed src/vimv
+installed bin/formark
+installed bin/bldr
+installed src/dmenu
+installed src/dwm
+installed src/slstatus
+installed src/slock
+installed src/dwm-scripts
+installed src/dmenu-scripts
+installed src/shellutils
+installed src/git-tools
+installed src/runc
+installed src/vimv
+installed bin/formark
+installed bin/bldr
