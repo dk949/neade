@@ -43,7 +43,6 @@ src/yay: logs/install.log $(GIT_SSH_FIX)
 	cd src/yay && makepkg -sirc --noconfirm
 	@echo "built $@" >> logs/build.log
 	@echo "installed $@" >> logs/install.log
-	$(call clean-git-ssh-fix)
 
 $(CORE_SRC) $(SECONDARY_SRC): logs $(GIT_SSH_FIX)
 	@mkdir -p logs
@@ -53,7 +52,6 @@ $(CORE_SRC) $(SECONDARY_SRC): logs $(GIT_SSH_FIX)
 	sudo make -C $@ install
 	@echo "built $@" >> logs/build.log
 	@echo "installed $@" >> logs/install.log
-	$(call clean-git-ssh-fix)
 
 
 $(SECONDARY_BIN): logs
@@ -72,7 +70,6 @@ $(ALL_CONFIG_FILES): $(GIT_SSH_FIX)
 	@echo "cloned $@" >> logs/download.log
 	@mkdir $(HOME)/$(XDG_CONFIG_HOME_NAME)
 	cp -r $@ $(HOME)/$(XDG_CONFIG_HOME_NAME)
-	$(call clean-git-ssh-fix)
 
 $(GIT_SSH_FIX):
 	@printf '[url "https://github.com/"]\n\tinsteadOf = git@github.com:' >> $(GIT_SSH_FIX)
