@@ -25,7 +25,7 @@ logs/install.log:
 
 $(AUR_INSTALL_LOG): src/yay
 	@mkdir -p logs
-	yay -S $(AUR)
+	yay -S $(AUR) --noconfirm --needed --answerclean None --answerdiff None
 	@echo "installed $(AUR)" >> $@
 
 $(PYTHON_INSTALL_LOG): logs/install.log
