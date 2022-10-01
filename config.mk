@@ -8,8 +8,11 @@ PREFIX=
 
 GRAPHICS = $(GRAPHICS_DRIVER_INTEL)
 UCODE = intel-ucode
+
 BROWSER = firefox
 TERMINAL = alacritty
+EDITOR = nvim
+LS = exa
 
 NEED_DEV_APPS         = 1
 NEED_PY_DEPS          = 1

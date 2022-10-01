@@ -70,9 +70,16 @@ $(ALL_CONFIG_FILES): $(GIT_SSH_FIX)
 	@echo "cloned $@" >> logs/download.log
 	@mkdir -p $(HOME)/$(XDG_CONFIG_HOME_NAME)
 	cp -r $@ $(HOME)/$(XDG_CONFIG_HOME_NAME)
+	@echo "installed $@" >> logs/install.log
+
+$(HOME)/.zshenv: $(XDG_CONFIG_HOME_NAME)/zsh
+	rm -f $(HOME)/.zshenv
+	ln -s $(HOME)/$(XDG_CONFIG_HOME_NAME)/zsh/.zshenv $(HOME)/.zshenv
+	@echo "installed $@" >> logs/install.log
+
 
 $(GIT_SSH_FIX):
 	@printf '[url "https://github.com/"]\n\tinsteadOf = git@github.com:\n' >> $(GIT_SSH_FIX)
 
 
-.PHONY: all clean
+.PHONY: all clean sysconfig

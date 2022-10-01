@@ -4,6 +4,7 @@ DRIVERS = linux-firmware \
 
 CORE_APPS =	$(DRIVERS) \
 			$(TERMINAL) \
+			$(LS)
 			bash-completion \
 			curl \
 			dash \
@@ -44,6 +45,7 @@ POWER_MANAGEMENT = powertop \
 
 UTILITY = $(call add,POWER_MANAGEMENT) \
 		  $(call add,SOUND) \
+		  $(EDITOR)
 		  feh \
 		  figlet \
 		  fzf \
